@@ -1,5 +1,6 @@
 
 import express from "express";
+import cors from "express";
 import dotenv from "dotenv";
 import cookieParser from "cookie-parser";
 import authRoutes from "./routes/auth.route.js"
@@ -10,10 +11,11 @@ import messageRoutes from "./routes/message.route.js";
 const app = express();
 const PORT = process.env.PORT || 5000 ;
 
+
 dotenv.config();
 app.use(express.json()); // to parse the incoming requests with Json payload (from req.body)
 app.use(cookieParser()); // middleware to acesss cookies
-
+// app.use(cors());
 
 
 // app.get("/", (req,res)=>{

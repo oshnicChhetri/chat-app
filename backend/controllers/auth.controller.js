@@ -3,15 +3,16 @@ import bcrypt from "bcryptjs";
 import generateTokenAndSetCookie from "../utils/generateToken.js";
 
 export const signup = async (req, res) => {
+  
   try {
     const { fullName, userName, password, confirmPassword, gender } = req.body;
 
     if (
-      !fullName.trim() ||
-      !userName.trim() ||
-      !password.trim() ||
-      !confirmPassword.trim() ||
-      !gender.trim()
+      !fullName ||
+      !userName ||
+      !password ||
+      !confirmPassword ||
+      !gender
     ) {
       return res.status(400).json({ error: "All fields are required" });
     }
@@ -78,7 +79,7 @@ export const login = async (req, res) => {
 
     generateTokenAndSetCookie(user._id, res);
 
-    res.status(201).json({
+    res.status(200).json({
       _id: user.id,
       fullName: user.fullName,
       userName: user.userName,
