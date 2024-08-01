@@ -7,16 +7,19 @@ body {
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
-    background-attachment: fixed;
+    /* background-attachment: fixed; */
 }
 
 ::-webkit-scrollbar{
+    cursor: pointer;
     width:8px;
 }
 ::-webkit-scrollbar-track{
+    cursor: pointer;
     background: gray;
 }
 ::-webkit-scrollbar-thumb{
+   
     background: black;
     border-radius:  5px;
 }

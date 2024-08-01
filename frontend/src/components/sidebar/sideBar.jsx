@@ -5,7 +5,7 @@ import Logout from './logout.jsx';
 
 const SideBar = () => {
   return (
-      <div className='border-r-3 border-r-slate-50  p-4 flex flex-col'>
+      <div className='border-r border-slate-50  p-4 flex flex-col'>
           <SearchInput/>
           <div className='divider px-3'></div>
           <ConversationsContainer/>
