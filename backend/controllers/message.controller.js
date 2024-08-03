@@ -1,5 +1,8 @@
 import Conversation from "../models/conversation.model.js";
 import Message from "../models/messages.model.js";
+import { getReceiverSocketId } from "../socket/socket.js";
+// import { io } from "socket.io";
+import { io} from "../socket/socket.js";
 
 
 export const sendMessage = async(req,res) =>{
@@ -32,10 +35,19 @@ try {
 
     // Socket io
 
+
 //     await conversation.save();
 //    await newMessage.save();
 
 await Promise.all([conversation.save(), newMessage.save()]);  // faster, makes sure that both run  at once, in parrellel
+
+
+const receiverSocketId = getReceiverSocketId(receiverId);
+
+if(receiverSocketId){
+  // io.to (<socket_id>).emit() used to send events to specefic client
+  io.to(receiverSocketId).emit("newMessage",newMessage)
+}
 
     res.status(201).json(newMessage);
     
